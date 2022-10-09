@@ -69,7 +69,6 @@ class ApiAdapter(private val context: Context): RecyclerView.Adapter<RecyclerVie
     }
 
 
-
     override fun getItemCount(): Int {
         // itemsプロパティに格納されている要素数を返す
         return items.size
@@ -114,7 +113,6 @@ class ApiAdapter(private val context: Context): RecyclerView.Adapter<RecyclerVie
             // addressTextViewのtextプロパティに代入されたオブジェクトのaddressプロパティを代入
             addressTextView.text = data.address
 
-
             // Picassoライブラリを使い、imageViewにdata.logoImageのurlの画像を読み込ませる
             Picasso.get().load(data.logoImage).into(imageView)
 
@@ -124,7 +122,6 @@ class ApiAdapter(private val context: Context): RecyclerView.Adapter<RecyclerVie
                 Log.d("apiApp", "Api Afapter お気に入りのマークはめ込み")
 
                 setImageResource(if (isFavorite) R.drawable.ic_star else R.drawable.ic_star_border) // Picassoというライブラリを使ってImageVIewに画像をはめ込む
-
 
                 setOnClickListener {
                     Log.d("apiApp", "ApiAdapter クリックされたよ")

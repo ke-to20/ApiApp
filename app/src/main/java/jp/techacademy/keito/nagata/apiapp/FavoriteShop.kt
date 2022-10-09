@@ -25,9 +25,7 @@ open class FavoriteShop: RealmObject() {
                 realm.where(FavoriteShop::class.java)
                     .findAll().let {
                         realm.copyFromRealm(it)
-
                     }
-
             }
 
         fun findBy(id: String): FavoriteShop? = // お気に入りされているShopをidで検索して返す。お気に入りに登録されていなければnullで返す
