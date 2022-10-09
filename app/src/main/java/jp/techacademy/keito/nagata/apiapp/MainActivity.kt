@@ -32,8 +32,36 @@ class MainActivity : AppCompatActivity(), FragmentCallback {
         }.attach()
     }
 
-    override fun onClickItem(url: String) {
+    override fun onClickItem(shop: Shop) {
+
+        var url = if (shop.couponUrls.sp.isNotEmpty()) shop.couponUrls.sp else shop.couponUrls.pc
+
+
         WebViewActivity.start(this, url)
+
+        Log.d("apiApp", "MainActivity onClickItem url = " + url)
+        Log.d("apiApp", "MainActivity shop = " + shop.toString())
+        Log.d("apiApp", "MainActivity shop の型 " + shop.javaClass.toString())
+
+
+    }
+
+    override fun onClickItem(shop: FavoriteShop) {
+
+//        var url = shop.url
+
+
+
+
+        WebViewActivity.start(this, shop.url)
+        Log.d("apiApp", "MainActivity shop = " + shop.toString())
+        Log.d("apiApp", "MainActivity onClickItem ID = " + shop.id.toString())
+        Log.d("apiApp", "MainActivity onClickItem name = " + shop.name)
+        Log.d("apiApp", "MainActivity onClickItem url = " + shop.url)
+        Log.d("apiApp", "MainActivity onClickItem address = " + shop.address)
+        Log.d("apiApp", "MainActivity onClickItem imageUrl = " + shop.imageUrl)
+        Log.d("apiApp", "MainActivity shop の型 " + shop.javaClass.toString())
+
     }
 
     override fun onAddFavorite(shop: Shop) { // Favoriteに追加するときのメソッド(Fragment -> Activity へ通知する)

@@ -17,11 +17,13 @@ class FavoriteAdapter(private val context: Context): RecyclerView.Adapter<Recycl
     // お気に入り登録したShopを格納
     private val items = mutableListOf<FavoriteShop>()
 
+
+
     // お気に入り画面から削除するときのコールバック（ApiFragmentへ通知するメソッド)
     var onClickDeleteFavorite: ((FavoriteShop) -> Unit)? = null
 
     // Itemを押したときのメソッド
-    var onClickItem: ((String) -> Unit)? = null
+    var onClickItem: ((FavoriteShop) -> Unit)? = null
 
     // 更新用のメソッド
     fun refresh(list: List<FavoriteShop>) {
@@ -66,10 +68,9 @@ class FavoriteAdapter(private val context: Context): RecyclerView.Adapter<Recycl
             rootView.apply {
                 setBackgroundColor(ContextCompat.getColor(context, if (position % 2 == 0) android.R.color.white else android.R.color.darker_gray)) // 偶数番目と機数番目で背景色を変更させる
                 setOnClickListener {
-                    onClickItem?.invoke(data.url)
+                    onClickItem?.invoke(data)
                     Log.d("apiApp", "FavoriteAdapter onClikIteem")
                     Log.d("apiApp", "FavoriteAdapter onClikIteem  data.url = " + data.url)
-                    Log.d("apiApp", "FavoriteAdapter onClikIteem  data.url = " + data.address)
 
                 }
             }

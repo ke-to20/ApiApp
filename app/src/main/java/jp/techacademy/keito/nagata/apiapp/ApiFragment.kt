@@ -65,9 +65,13 @@ class ApiFragment: Fragment() {
                 fragmentCallback?.onClickItem(it)
                 Log.d("apiApp", "ApiFragment　 アイテム　クリック　ページ遷移")
                 Log.d("apiApp", "ApiFragment it = " + it)
+                Log.d("apiApp", "ApiFragment it の型 " + it.javaClass.kotlin)
+
 
             }
         }
+
+
         // RecyclerViewの初期化
         recyclerView.apply {
             adapter = apiAdapter

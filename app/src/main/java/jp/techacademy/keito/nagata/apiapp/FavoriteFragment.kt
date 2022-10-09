@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.fragment_favorite.*
 
 class FavoriteFragment: Fragment() {
 
+
     private val favoriteAdapter by lazy { FavoriteAdapter(requireContext()) }
     private var fragmentCallback : FragmentCallback? = null // Fragment -> Activity にFavoriteの変更を通知する
 
@@ -30,16 +31,26 @@ class FavoriteFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // ここから初期化処理を行う
+
+
+
         // FavoriteAdapterのお気に入り削除用のメソッドの追加を行う
         favoriteAdapter.apply {
             onClickDeleteFavorite = { // Adapterの処理をそのままActivityに通知する
                 fragmentCallback?.onDeleteFavorite(it.id)
             }
-            // Itemをクリックしたとき
+//            // Itemをクリックしたとき
             onClickItem = {
+
+                Log.d("apiApp", "FavoriteFragment onClickItem")
+
                 fragmentCallback?.onClickItem(it)
+                Log.d("apiApp", "FavoriteFragment it = " + it)
             }
         }
+
+
+
         // RecyclerViewの初期化
         recyclerView.apply {
             adapter = favoriteAdapter
