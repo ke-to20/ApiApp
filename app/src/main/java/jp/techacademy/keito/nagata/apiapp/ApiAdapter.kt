@@ -74,7 +74,6 @@ class ApiAdapter(private val context: Context): RecyclerView.Adapter<RecyclerVie
         // itemsプロパティに格納されている要素数を返す
         return items.size
 
-
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {

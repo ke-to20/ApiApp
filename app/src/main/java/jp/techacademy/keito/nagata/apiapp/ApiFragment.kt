@@ -27,7 +27,6 @@ class ApiFragment: Fragment() {
     private var page = 0
 
 
-
     // Apiでデータを読み込み中ですフラグ。追加ページの読み込みの時にこれがないと、連続して読み込んでしまうので、それの制御のため
     private var isLoading = false
 
@@ -50,7 +49,6 @@ class ApiFragment: Fragment() {
         // ApiAdapterのお気に入り追加、削除用のメソッドの追加を行う
 
 
-
         apiAdapter.apply {
             onClickAddFavorite = { // Adapterの処理をそのままActivityに通知する
                 fragmentCallback?.onAddFavorite(it)
@@ -67,10 +65,8 @@ class ApiFragment: Fragment() {
                 Log.d("apiApp", "ApiFragment it = " + it)
                 Log.d("apiApp", "ApiFragment it の型 " + it.javaClass.kotlin)
 
-
             }
         }
-
 
         // RecyclerViewの初期化
         recyclerView.apply {

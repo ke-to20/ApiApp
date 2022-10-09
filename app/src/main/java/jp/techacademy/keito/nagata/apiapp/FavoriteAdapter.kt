@@ -17,8 +17,6 @@ class FavoriteAdapter(private val context: Context): RecyclerView.Adapter<Recycl
     // お気に入り登録したShopを格納
     private val items = mutableListOf<FavoriteShop>()
 
-
-
     // お気に入り画面から削除するときのコールバック（ApiFragmentへ通知するメソッド)
     var onClickDeleteFavorite: ((FavoriteShop) -> Unit)? = null
 

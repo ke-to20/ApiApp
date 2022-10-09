@@ -8,6 +8,8 @@ import io.realm.annotations.PrimaryKey
 import java.util.function.LongFunction
 
 open class FavoriteShop: RealmObject() {
+
+
     @PrimaryKey
     var id: String = ""
     var imageUrl: String = ""

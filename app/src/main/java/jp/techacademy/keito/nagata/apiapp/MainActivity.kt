@@ -6,10 +6,10 @@ import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
+import jp.techacademy.keito.nagata.apiapp.WebViewActivity.Companion.webview_star_draw
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), FragmentCallback {
-
 
     private val viewPagerAdapter by lazy { ViewPagerAdapter(this) }
 
@@ -36,7 +36,6 @@ class MainActivity : AppCompatActivity(), FragmentCallback {
 
         var url = if (shop.couponUrls.sp.isNotEmpty()) shop.couponUrls.sp else shop.couponUrls.pc
 
-
         WebViewActivity.start(this, url)
 
         Log.d("apiApp", "MainActivity onClickItem url = " + url)
@@ -44,14 +43,21 @@ class MainActivity : AppCompatActivity(), FragmentCallback {
         Log.d("apiApp", "MainActivity shop の型 " + shop.javaClass.toString())
 
 
+//        WebViewActivityに持っていく
+        var id_web = shop.id
+        var name_web = shop.name
+        var imageUrl_web = shop.logoImage
+        var url_web = if (shop.couponUrls.sp.isNotEmpty()) shop.couponUrls.sp else shop.couponUrls.pc
+        var address_web = shop.address
+
+        val web_list = mutableListOf<String>(id_web, name_web, imageUrl_web, url_web, address_web)
+        Log.d("apiApp", "MainActivity web_list = " + web_list[0])
+
+        webview_star_draw(web_list)
+
     }
 
     override fun onClickItem(shop: FavoriteShop) {
-
-//        var url = shop.url
-
-
-
 
         WebViewActivity.start(this, shop.url)
         Log.d("apiApp", "MainActivity shop = " + shop.toString())
@@ -62,6 +68,17 @@ class MainActivity : AppCompatActivity(), FragmentCallback {
         Log.d("apiApp", "MainActivity onClickItem imageUrl = " + shop.imageUrl)
         Log.d("apiApp", "MainActivity shop の型 " + shop.javaClass.toString())
 
+        //        WebViewActivityに持っていく
+        var id_web = shop.id
+        var name_web = shop.name
+        var imageUrl_web = shop.imageUrl
+        var url_web = shop.url
+        var address_web = shop.address
+
+        val web_list = mutableListOf<String>(id_web, name_web, imageUrl_web, url_web, address_web)
+        Log.d("apiApp", "MainActivity web_list = " + web_list[0])
+
+        webview_star_draw(web_list)
     }
 
     override fun onAddFavorite(shop: Shop) { // Favoriteに追加するときのメソッド(Fragment -> Activity へ通知する)
@@ -75,7 +92,10 @@ class MainActivity : AppCompatActivity(), FragmentCallback {
 
 //            ＝＝＝＝＝　住所　追加　＝＝＝＝＝
             address = shop.address
+
         })
+
+
         (viewPagerAdapter.fragments[VIEW_PAGER_POSITION_FAVORITE] as FavoriteFragment).updateData()
     }
 
