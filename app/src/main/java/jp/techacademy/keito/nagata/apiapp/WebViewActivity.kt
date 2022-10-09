@@ -10,7 +10,7 @@ import jp.techacademy.keito.nagata.apiapp.FavoriteShop.Companion.findBy
 import kotlinx.android.synthetic.main.activity_web_view.*
 
 
-class WebViewActivity : AppCompatActivity() , FragmentCallback{
+class WebViewActivity : AppCompatActivity(){
 
     // 一覧画面から登録するときのコールバック（FavoriteFragmentへ通知するメソッド)
     var onClickAddFavorite: ((Shop) -> Unit)? = null
@@ -140,7 +140,7 @@ class WebViewActivity : AppCompatActivity() , FragmentCallback{
         //        WebView上でお気に入りから削除
         fun webDel() {
             Log.d("apiApp", "webDel")
-            onDeleteFavorite(web_id.toString())
+            delete(web_id.toString())
 
         }
 
