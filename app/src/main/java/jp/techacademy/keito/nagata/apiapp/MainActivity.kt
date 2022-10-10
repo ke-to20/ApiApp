@@ -13,9 +13,19 @@ class MainActivity : AppCompatActivity(), FragmentCallback {
 
     private val viewPagerAdapter by lazy { ViewPagerAdapter(this) }
 
+    override fun onStart() {
+        super.onStart()
+        Log.d("apiApp", "onStart")
+
+    }
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        Log.d("apiApp", "mainAcktivity onCreate(")
 
         // ViewPager2の初期化
         viewPager2.apply {
@@ -95,7 +105,6 @@ class MainActivity : AppCompatActivity(), FragmentCallback {
 
         })
 
-
         (viewPagerAdapter.fragments[VIEW_PAGER_POSITION_FAVORITE] as FavoriteFragment).updateData()
     }
 
@@ -126,7 +135,12 @@ class MainActivity : AppCompatActivity(), FragmentCallback {
     }
 
     companion object {
+
         private const val VIEW_PAGER_POSITION_API = 0
         private const val VIEW_PAGER_POSITION_FAVORITE = 1
     }
+
+
+
+
 }

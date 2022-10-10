@@ -35,18 +35,31 @@ class ApiFragment: Fragment() {
         if (context is FragmentCallback) {
             fragmentCallback = context
         }
+        Log.d("apiApp", "onAttach")
 
         Log.d("apiApp", fragmentCallback.toString())
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        updateData()
+
+    }
+
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_api, container, false) // fragment_api.xmlが反映されたViewを作成して、returnします
+        Log.d("apiApp", "onCreateView")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // ここから初期化処理を行う
         // ApiAdapterのお気に入り追加、削除用のメソッドの追加を行う
+
+
+        Log.d("apiApp", "onViewCreated")
 
 
         apiAdapter.apply {

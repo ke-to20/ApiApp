@@ -11,4 +11,5 @@ interface FragmentCallback {
 
     fun onClickItem(shop: FavoriteShop)
 
+
 }

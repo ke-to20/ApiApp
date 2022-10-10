@@ -4,10 +4,12 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import jp.techacademy.keito.nagata.apiapp.FavoriteShop.Companion.delete
 import jp.techacademy.keito.nagata.apiapp.FavoriteShop.Companion.findBy
 import kotlinx.android.synthetic.main.activity_web_view.*
+import kotlinx.android.synthetic.main.fragment_api.*
 
 
 class WebViewActivity : AppCompatActivity(){
@@ -17,6 +19,8 @@ class WebViewActivity : AppCompatActivity(){
 
     // 一覧画面から削除するときのコールバック（ApiFragmentへ通知するメソッド)
     var onClickDeleteFavorite: ((Shop) -> Unit)? = null
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,6 +57,8 @@ class WebViewActivity : AppCompatActivity(){
                 webAdd()
 
 
+
+
             } else {
 //                お気に入りに追加されているときの処理
                 favoriteImageView1.setImageResource(R.drawable.ic_star_border)
@@ -60,15 +66,18 @@ class WebViewActivity : AppCompatActivity(){
 
 //                お気に入り削除
                 webDel()
-
             }
-
 
         }
 
-
-
     }
+
+    override fun onStop(){
+        super.onStop()
+        Log.d("apiApp", "onStop")
+    }
+
+
 
     companion object {
 
@@ -140,9 +149,12 @@ class WebViewActivity : AppCompatActivity(){
         //        WebView上でお気に入りから削除
         fun webDel() {
             Log.d("apiApp", "webDel")
-            delete(web_id.toString())
+
+
+            FavoriteShop.delete(web_id.toString())
 
         }
+
 
 
     }
